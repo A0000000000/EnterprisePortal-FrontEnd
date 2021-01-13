@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <router-view />
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      message: "Hello World",
-    };
-  },
-};
+export default {};
 </script>
 
 <style scoped>

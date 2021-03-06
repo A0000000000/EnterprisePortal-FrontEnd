@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <router-view />
+    <div id="menu">
+      <Menu></Menu>
+    </div>
+    <div id="page">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import Menu from "./components/Menu";
+
+export default {
+  components: {
+    Menu,
+  },
+  mounted() {
+    this.$router.push("/");
+  },
+};
 </script>
 
 <style scoped>
 #app {
   text-align: center;
   width: 100%;
-  font-size: 20px;
+  height: 100vh;
+}
+#menu {
+  height: 20%;
+}
+#page {
+  height: 80%;
 }
 </style>

@@ -14,7 +14,10 @@
   align-items: center;
   flex-direction: column;
   font-size: 28px;
-  height: 60%;
+  background-image: url("../assets/images/mi.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 </style>
 

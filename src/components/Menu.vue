@@ -16,6 +16,9 @@
 </template>
 
 <style scoped>
+div {
+  text-align: center;
+}
 .menu {
   line-height: 75px;
   font-size: 20px;

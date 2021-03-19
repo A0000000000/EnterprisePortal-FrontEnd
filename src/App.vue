@@ -43,6 +43,9 @@ export default {
     Menu,
     Footer,
   },
+  data() {
+    return {};
+  },
   mounted() {
     this.$router.push("/");
   },

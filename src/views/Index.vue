@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      tips: "致力于让每个人享受科技的乐趣",
+      tips: "让全球每个人都能享受科技带来的美好生活",
       index: 0,
     };
   },

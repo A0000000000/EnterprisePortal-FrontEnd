@@ -15,6 +15,11 @@ const routes = [
     component: () => import('../views/Index.vue')
   },
   {
+    path: '/person',
+    name: 'Person',
+    component: () => import('../views/Person.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue'),
@@ -29,15 +34,15 @@ const routes = [
       },
       {
         path: '/about/miCulture',
-        component: () => import('../views/about/Introduction.vue')
+        component: () => import('../views/about/Culture.vue')
       },
       {
         path: '/about/civilization',
-        component: () => import('../views/about/Introduction.vue')
+        component: () => import('../views/about/Civilization.vue')
       },
       {
         path: '/about/joinMi',
-        component: () => import('../views/about/Introduction.vue')
+        component: () => import('../views/about/JoinMi.vue')
       }
     ]
   }

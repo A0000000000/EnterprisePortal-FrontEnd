@@ -22,9 +22,6 @@
 .index {
   text-align: center;
   font-size: 28px;
-  background-image: url("../assets/images/mi.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 100%;
 }
 

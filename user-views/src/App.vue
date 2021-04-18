@@ -12,8 +12,12 @@
 <style>
 #app {
   width: 100%;
-  height: 100vh;
   overflow: hidden;
+  background-image: url("./assets/images/mi.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 #dock {
   position: fixed;

@@ -43,8 +43,9 @@ export default {
   mounted() {
     this.axios
       .get("http://localhost:3002/api/civilization/getCivilizations")
-      .then((data) => {
-        if (data.status === 200) {
+      .then((res) => {
+        const data = res.data
+        if (data.code === 200) {
           this.timeline = data.data.map((item) => ({
             time: new Date(item.time),
             content: item.content,

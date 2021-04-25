@@ -1,8 +1,5 @@
 <template>
   <div id="culture">
-    <div id="title">
-      <h2>公司文化</h2>
-    </div>
     <img src="../../assets/images/Culture.jpg" alt srcset />
     <div v-for="(item, index) in list" :key="index" class="item">
       <h2>{{ item.title }}</h2>
@@ -12,11 +9,6 @@
   </div>
 </template>
 <style scoped>
-#title {
-  width: 100%;
-  text-align: center;
-  font-size: 40px;
-}
 #culture div p {
   text-align: justify;
   text-justify: inter-ideograph;
@@ -34,8 +26,9 @@ export default {
   mounted() {
     this.axios
       .get("http://localhost:3002/api/culture/getCultures")
-      .then((data) => {
-        if (data.status === 200) {
+      .then((res) => {
+        const data = res.data
+        if (data.code === 200) {
           let arr = data.data;
           for (let i in arr) {
             let item = {

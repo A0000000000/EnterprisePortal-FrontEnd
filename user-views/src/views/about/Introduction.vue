@@ -25,8 +25,9 @@ export default {
   mounted() {
     this.axios
       .get("http://localhost:3002/api/introduction/getIntroductions")
-      .then((data) => {
-        if (data.status === 200) {
+      .then((res) => {
+        const data = res.data
+        if (data.code === 200) {
           let arr = data.data;
           for (let item in arr) {
             this.infos.push({

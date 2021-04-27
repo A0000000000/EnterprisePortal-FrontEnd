@@ -40,7 +40,7 @@ export default {
       this.$router.push("/login");
     } else {
       this.axios
-        .get("http://localhost:3001/api/user/token", {
+        .get("user-function-provider", "/api/user/token", {
           headers: {
             token,
           },

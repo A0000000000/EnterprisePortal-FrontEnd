@@ -24,9 +24,9 @@
 export default {
   mounted() {
     this.axios
-      .get("http://localhost:3002/api/introduction/getIntroductions")
+      .get("guest-function-provider", "/api/introduction/getIntroductions")
       .then((res) => {
-        const data = res.data
+        const data = res.data;
         if (data.code === 200) {
           let arr = data.data;
           for (let item in arr) {

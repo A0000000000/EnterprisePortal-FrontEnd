@@ -15,6 +15,26 @@ const routes = [
     component: () => import('../views/Index.vue')
   },
   {
+    path: '/shop',
+    name: 'Shop',
+    component: () => import('../views/Shop.vue')
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/Cart.vue')
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: () => import('../views/Message.vue')
+  },
+  {
+    path: '/messageDetails',
+    name: 'MessageDetails',
+    component: () => import('../views/MessageDetails.vue')
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue')

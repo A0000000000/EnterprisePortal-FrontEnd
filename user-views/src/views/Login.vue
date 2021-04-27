@@ -63,7 +63,7 @@ export default {
         password: this.loginPassword,
       };
       this.axios
-        .post("http://localhost:3001/api/user/login", params)
+        .post("user-function-provider", "/api/user/login", params)
         .then((res) => {
           let data = res.data;
           if (data.code !== 200) {
@@ -84,7 +84,7 @@ export default {
         form.append("file", this.file);
       }
       this.axios
-        .post("http://localhost:3001/api/user/register", form, {
+        .post("user-function-provider", "/api/user/register", form, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {

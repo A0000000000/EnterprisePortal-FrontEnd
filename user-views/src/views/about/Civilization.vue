@@ -42,9 +42,9 @@ img {
 export default {
   mounted() {
     this.axios
-      .get("http://localhost:3002/api/civilization/getCivilizations")
+      .get("guest-function-provider", "/api/civilization/getCivilizations")
       .then((res) => {
-        const data = res.data
+        const data = res.data;
         if (data.code === 200) {
           this.timeline = data.data.map((item) => ({
             time: new Date(item.time),

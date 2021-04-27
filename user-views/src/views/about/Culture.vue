@@ -25,7 +25,7 @@
 export default {
   mounted() {
     this.axios
-      .get("http://localhost:3002/api/culture/getCultures")
+      .get("guest-function-provider", "/api/culture/getCultures")
       .then((res) => {
         const data = res.data
         if (data.code === 200) {

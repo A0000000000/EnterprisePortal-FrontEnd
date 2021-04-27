@@ -22,14 +22,16 @@ export default {
     if (!token) {
       this.$router.push("/login");
     }
-    this.axios.get('http://localhost:3003/api/feedback/getAllFeedback', {
-      headers: {
-        token
-      }
-    }).then(res => {
-      let data = res.data
-      console.log(data)
-    })
+    this.axios
+      .get("feedback-function-provider", "/api/feedback/getAllFeedback", {
+        headers: {
+          token,
+        },
+      })
+      .then((res) => {
+        let data = res.data;
+        console.log(data);
+      });
   },
   data() {
     return {
@@ -44,18 +46,22 @@ export default {
         content: this.content,
       };
       this.axios
-        .post("http://localhost:3003/api/feedback/addNewFeedback", params, {
-          headers: {
-            token: this.$store.getters.getToken,
-          },
-        })
+        .post(
+          "feedback-function-provider",
+          "/api/feedback/addNewFeedback",
+          params,
+          {
+            headers: {
+              token: this.$store.getters.getToken,
+            },
+          }
+        )
         .then((res) => {
           let data = res.data;
           if (data.code === 200) {
             this.title = "";
             this.content = "";
           }
-          console.log(data.message);
           alert(data.message);
         });
     },

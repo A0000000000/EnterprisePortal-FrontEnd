@@ -20,9 +20,19 @@ const routes = [
     component: () => import('../views/Shop.vue')
   },
   {
+    path: '/details',
+    name: 'Details',
+    component: () => import('../views/Details.vue')
+  },
+  {
     path: '/cart',
     name: 'Cart',
     component: () => import('../views/Cart.vue')
+  },
+  {
+    path: '/coupon',
+    name: 'Coupon',
+    component: () => import('../views/Coupon.vue')
   },
   {
     path: '/message',
@@ -48,6 +58,11 @@ const routes = [
     path: '/feedback',
     name: 'Feedback',
     component: () => import('../views/Feedback.vue')
+  },
+  {
+    path: '/location',
+    name: 'Location',
+    component: () => import('../views/Location.vue')
   },
   {
     path: '/about',

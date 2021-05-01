@@ -1,34 +1,37 @@
 <template>
   <div id="main">
-    <div>
-      <a @click="changePage(true)">登录</a>
-      <a @click="changePage(false)">注册</a>
+    <h1>登录和注册</h1>
+    <div class="buttons">
+      <button class="btn btn-secondary" @click="changePage(true)" v-if="!isLogin">已有账号? 进行登录</button>
+      <button class="btn btn-secondary" @click="changePage(false)" v-if="isLogin">没有账号? 进行注册</button>
     </div>
-    <div v-if="isLogin">
-      <input type="text" class="input" v-model="loginUsername" placeholder="请输入用户名" />
+    <div v-if="isLogin" class="mainContainer">
+      <input type="text" class="form-control" v-model="loginUsername" placeholder="请输入用户名" />
       <br />
-      <input type="password" class="input" v-model="loginPassword" placeholder="请输入密码" />
+      <input type="password" class="form-control" v-model="loginPassword" placeholder="请输入密码" />
       <br />
-      <button class="btn" @click="login">登录</button>
+      <button class="btn btn-primary" @click="login">登录</button>
     </div>
-    <div v-if="!isLogin">
-      <input type="text" class="input" v-model="username" placeholder="用户名" />
+    <div v-if="!isLogin" class="mainContainer">
+      <input type="text" class="form-control" v-model="username" placeholder="用户名" />
       <br />
-      <input type="email" class="input" v-model="email" placeholder="邮箱" />
+      <input type="email" class="form-control" v-model="email" placeholder="邮箱" />
       <br />
-      <input type="password" class="input" v-model="password" placeholder="密码" />
+      <input type="password" class="form-control" v-model="password" placeholder="密码" />
       <br />
-      <input type="radio" id="user" name="role" value="User" v-model="role" />
-      <label for="user">普通用户</label>
-      <input type="radio" id="ent" name="role" value="Enterprise" v-model="role" />
-      <label for="ent">小米之家</label>
+      <div>
+        <input type="radio" id="user" name="role" value="User" v-model="role" />
+        <label for="user">普通用户</label>
+        <input type="radio" id="ent" name="role" value="Enterprise" v-model="role" />
+        <label for="ent">小米之家</label>
+      </div>
       <br />
-      <div v-if="role === 'Enterprise'">
+      <div v-if="role === 'Enterprise'" class="form-group">
         <label for="file">验证材料</label>
-        <input type="file" id="file" class="input" @change="uploadFile" />
+        <input type="file" id="file" class="form-control-file" @change="uploadFile" />
         <br />
       </div>
-      <button class="btn" @click="register">注册</button>
+      <button class="btn btn-primary" @click="register">注册</button>
     </div>
   </div>
 </template>
@@ -36,6 +39,16 @@
 #main {
   width: 100%;
   text-align: center;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-control {
+  width: 200px;
 }
 </style>
 <script>

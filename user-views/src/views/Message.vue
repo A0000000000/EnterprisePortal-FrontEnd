@@ -1,11 +1,32 @@
 <template>
-  <div>
-    <div class="item" v-for="(item, index) in messagesOrder" :key="index">
-      <button @click="handleDetails(item.id)">{{item.title}}</button>
+  <div id="main">
+    <h1>活动和公告</h1>
+    <div id="content">
+      <div class="item" v-for="(item, index) in messagesOrder" :key="index">
+        {{ item.title }}
+        <button
+          type="button"
+          class="btn btn-info"
+          @click="handleDetails(item.id)"
+        >查看详情</button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+#main {
+  color: black;
+  text-align: center;
+}
+#content {
+  margin-top: 50px;
+}
+.item {
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  color: black;
+}
 </style>
 
 <script>
@@ -43,6 +64,7 @@ export default {
           id,
         },
       });
+      return false;
     },
   },
   computed: {

@@ -1,0 +1,42 @@
+<template>
+  <div></div>
+</template>
+<style scoped>
+</style>
+<script>
+export default {
+  mounted() {
+    const id = this.$route.query.id;
+    this.axios
+      .get("good-function-provider", "/api/good/getGoodById/" + id)
+      .then((res) => {
+        const data = res.data;
+        if (data.code === 200) {
+          const model = data.data;
+          this.id = model.id;
+          this.details = model.details;
+          this.name = model.name;
+          this.picture = model.picture;
+          this.count = model.count;
+          this.price = model.price;
+          this.time = new Date(model.time);
+          this.type = model.type;
+        } else {
+          alert(data.message);
+        }
+      });
+  },
+  data() {
+    return {
+      id: null,
+      details: null,
+      name: null,
+      picture: null,
+      count: 0,
+      price: 0,
+      time: null,
+      type: null,
+    };
+  },
+};
+</script>

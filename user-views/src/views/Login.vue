@@ -82,6 +82,13 @@ export default {
           if (data.code !== 200) {
             alert(data.message);
           } else {
+            if (
+              data.data.role === "ROLE_ADMIN" ||
+              data.data.role === "ROLE_MANAGER"
+            ) {
+              alert("管理员账户请转到后台管理页面登录.");
+              return;
+            }
             this.$store.commit("setToken", data.data);
             this.$router.push("/person");
           }

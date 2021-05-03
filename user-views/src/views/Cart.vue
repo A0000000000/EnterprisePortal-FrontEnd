@@ -8,6 +8,7 @@
             :src="'http://localhost:3005/api/good/getImage/' + item.picture"
             alt="缩略图"
             width="200px"
+            height="150px"
           />
         </div>
         <div class="subItem">
@@ -44,6 +45,9 @@ export default {
   mounted() {
     const cart = this.$store.getters.getCart;
     const goods = cart.goods;
+    if (!goods || goods.length === 0) {
+      this.$router.push("/shop");
+    }
     goods.forEach((item) => {
       this.axios
         .get("good-function-provider", "/api/good/getGoodById/" + item)

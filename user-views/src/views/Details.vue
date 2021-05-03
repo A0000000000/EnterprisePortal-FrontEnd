@@ -1,7 +1,18 @@
 <template>
-  <div></div>
+  <div id="main">
+    <h1>
+      {{name}}
+      <a href="#/shop">(首页)</a>
+    </h1>
+    <div v-html="getDetails"></div>
+  </div>
 </template>
 <style scoped>
+#main {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 </style>
 <script>
 export default {
@@ -37,6 +48,11 @@ export default {
       time: null,
       type: null,
     };
+  },
+  computed: {
+    getDetails() {
+      return this.showdown.makeHtml(this.details);
+    },
   },
 };
 </script>

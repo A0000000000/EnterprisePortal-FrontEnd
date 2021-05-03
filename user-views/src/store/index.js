@@ -9,7 +9,13 @@ export default new Vuex.Store({
     role: null,
     cart: {
       goods: [],
-      coupon: null
+      coupon: null,
+      location: {
+        type: null,
+        id: null,
+        name: null,
+        details: null
+      }
     }
   },
   getters: {
@@ -36,6 +42,28 @@ export default new Vuex.Store({
     },
     setCoupon(state, id) {
       state.cart.coupon = id
+    },
+    setLocation(state, params) {
+      if (params.type === 'USE_OLD') {
+        state.cart.location.type = params.type
+        state.cart.location.id = params.id
+      } else {
+        state.cart.location.type = params.type
+        state.cart.location.name = params.name
+        state.cart.location.details = params.details
+      }
+    },
+    clearCart(state) {
+      state.cart = {
+        goods: [],
+        coupon: null,
+        location: {
+          type: null,
+          id: null,
+          name: null,
+          details: null
+        }
+      }
     }
   },
   actions: {

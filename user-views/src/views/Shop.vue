@@ -9,23 +9,24 @@
     </div>
     <div id="content">
       <div class="item" v-for="(item, index) in goods" :key="index">
-        <a :href="'#/details?id=' + item.id">
-          <img
-            :src="'http://localhost:3005/api/good/getImage/' + item.picture"
-            alt="缩略图"
-            width="200px"
-          />
-        </a>
-        <br />
-        <p>{{item.name}}</p>
-        <p>售价: {{item.price}}元</p>
-        <!-- <p>库存: {{item.count}}</p> -->
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          @click="cartOps(item.id, isInCart(item.id))"
-        >{{ isInCart(item.id) ? "从购物车移除" : "添加到购物车"}}</button>
+        <div v-show="item.count > 0">
+          <a :href="'#/details?id=' + item.id">
+            <img
+              :src="'http://localhost:3005/api/good/getImage/' + item.picture"
+              alt="缩略图"
+              width="200px"
+              height="150px"
+            />
+          </a>
+          <br />
+          <p>{{item.name}}</p>
+          <p>售价: {{item.price}}元</p>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="cartOps(item.id, isInCart(item.id))"
+          >{{ isInCart(item.id) ? "从购物车移除" : "添加到购物车"}}</button>
+        </div>
       </div>
       <div class="clear"></div>
     </div>

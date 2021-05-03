@@ -2,14 +2,14 @@
   <div id="main">
     <h1>请选择您要使用的优惠券</h1>
     <div class="item" v-for="(item, index) in couponsDeal" :key="index">
-      <label for="ok" v-if="item.status">
+      <label :for="'ok' + index" v-if="item.status">
         <p>优惠券类型: {{ item.type }}</p>
         <p>优惠券条件: 满{{ item.condition }}元</p>
         <p>优惠金额: {{ item.money }}元</p>
         <p>使用此优惠券</p>
       </label>
-      <input type="radio" @click="useCoupon(item.id)" id="ok" name="coupon" v-if="item.status" />
-      <label for="no" v-if="!item.status">
+      <input type="radio" @click="useCoupon(item.id)" :id="'ok' + index" name="coupon" v-if="item.status" />
+      <label :for="'no' + index" v-if="!item.status">
         <p>优惠券类型: {{ item.type }}</p>
         <p>优惠券条件: {{ item.condition }}</p>
         <p>优惠金额: {{ item.money }}元</p>
@@ -18,7 +18,7 @@
       <input
         type="radio"
         @click="useCoupon(item.id)"
-        id="no"
+        :id="'no' + index"
         name="coupon"
         v-if="!item.status"
         disabled

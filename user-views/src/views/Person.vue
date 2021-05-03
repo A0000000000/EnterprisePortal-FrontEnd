@@ -4,6 +4,15 @@
     <div class="item">
       <p>用户名: {{username}}</p>
     </div>
+    <div>
+      <p>
+        修改密码:
+        <span class="pwd">
+          <input type="password" v-model="password" placeholder="请输入新密码" />
+        </span>
+        <button @click="changePassword">修改</button>
+      </p>
+    </div>
     <div class="item">
       <p>用户身份: {{getRole}}</p>
     </div>
@@ -14,16 +23,10 @@
       <p>邮箱状态: {{emailStatus === 'UnCheck' ? '未验证' : '已验证'}}</p>
     </div>
     <div class="item">
-      <p>创建时间: {{createTime}}</p>
+      <p>创建时间: {{getCreateDate}}</p>
     </div>
     <div class="item" v-if="getRole === '小米之家'">
       <p>账户状态: {{accountStatus === 0 ? '未认证' : '已认证'}}</p>
-    </div>
-    <div class="item" v-if="getRole === '小米之家'">
-      <p>认证文件: {{filename}}</p>
-    </div>
-    <div class="item" v-if="getRole === '小米之家'">
-      <p>文件信息: {{contentType}}</p>
     </div>
   </div>
 </template>
@@ -68,16 +71,50 @@ export default {
       username: null,
       email: null,
       emailStatus: null,
-      createTime: null,
+      createTime: new Date(),
       filename: null,
       role: null,
       accountStatus: null,
       contentType: null,
+      password: "",
     };
   },
   computed: {
     getRole() {
       return this.role === "ROLE_ENTERPRISE" ? "小米之家" : "普通用户";
+    },
+    getCreateDate() {
+      return `${this.createTime.getFullYear()}-${
+        this.createTime.getMonth() + 1
+      }-${this.createTime.getDate()}`;
+    },
+  },
+  methods: {
+    changePassword() {
+      if (!this.password || this.password.length === 0) {
+        alert("新密码不能为空.");
+        return;
+      }
+      this.axios
+        .put(
+          "user-function-provider",
+          "/api/user/updateInfo",
+          { password: this.password },
+          {
+            headers: {
+              token: this.$store.getters.getToken,
+            },
+          }
+        )
+        .then((res) => {
+          const data = res.data;
+          if (data.code === 200) {
+            alert("修改成功.");
+            this.password = "";
+          } else {
+            alert(data.message);
+          }
+        });
     },
   },
 };

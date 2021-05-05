@@ -10,8 +10,6 @@
 <style scoped>
 #main {
   text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 </style>
 <script>

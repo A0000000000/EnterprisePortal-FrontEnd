@@ -13,7 +13,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
-Vue.prototype.axios = new Fegin('http://localhost:8000')
+
+Vue.prototype.ip = '127.0.0.1'
+
+Vue.prototype.axios = new Fegin(`http://${Vue.prototype.ip}:8000`)
 Vue.prototype.showdown = new showdown.Converter()
 
 new Vue({

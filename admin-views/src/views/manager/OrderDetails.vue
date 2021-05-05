@@ -1,6 +1,9 @@
 <template>
   <div id="main">
-    <h1>订单详情</h1>
+    <h1>
+      订单详情
+      <a href="#/managerOrder">(首页)</a>
+    </h1>
     <div id="content">
       <h2>商品列表</h2>
       <div id="goods">
@@ -41,7 +44,7 @@
           <span v-if="status === 0">状态: 待发货</span>
           <span v-if="status === 1">状态: 待收货</span>
           <span v-if="status === 2">状态: 已收货</span>
-          <button class="btn btn-primary" v-if="status !== 2" @click="submit">确认收货</button>
+          <button class="btn btn-primary" v-if="status === 0" @click="submit">确认发货</button>
         </div>
         <div class="clear"></div>
       </div>
@@ -182,19 +185,15 @@ export default {
   methods: {
     submit() {
       this.axios
-        .get(
-          "order-function-provider",
-          "/api/order/sureReciver/" + this.orderId,
-          {
-            headers: {
-              token: this.$store.getters.getToken,
-            },
-          }
-        )
+        .get("order-function-provider", "/api/order/sureSend/" + this.orderId, {
+          headers: {
+            token: this.$store.getters.getToken,
+          },
+        })
         .then((res) => {
           const data = res.data;
           if (data.code === 200) {
-            this.status = 2;
+            this.status = 1;
           } else {
             alert(data.message);
           }

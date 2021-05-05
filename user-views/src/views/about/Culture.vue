@@ -24,10 +24,11 @@
 <script>
 export default {
   mounted() {
+    this.realIp = this.ip;
     this.axios
       .get("guest-function-provider", "/api/culture/getCultures")
       .then((res) => {
-        const data = res.data
+        const data = res.data;
         if (data.code === 200) {
           let arr = data.data;
           for (let i in arr) {
@@ -35,7 +36,7 @@ export default {
               title: arr[i].title,
               content: arr[i].contents,
               image:
-                "http://localhost:3002/api/culture/getImage/" +
+                `http://${this.realIp}:3002/api/culture/getImage/` +
                 arr[i].image +
                 "?type=" +
                 arr[i].type,
@@ -50,6 +51,7 @@ export default {
   data() {
     return {
       list: [],
+      realIp: "",
     };
   },
 };

@@ -23,6 +23,7 @@
 <script>
 export default {
   mounted() {
+    this.realIp = this.ip;
     this.axios
       .get("guest-function-provider", "/api/introduction/getIntroductions")
       .then((res) => {
@@ -32,7 +33,7 @@ export default {
           for (let item in arr) {
             this.infos.push({
               image:
-                "http://localhost:3002/api/introduction/getImage/" +
+                `http://${this.realIp}:3002/api/introduction/getImage/` +
                 arr[item].image +
                 "?type=" +
                 arr[item].type,
@@ -47,6 +48,7 @@ export default {
   data() {
     return {
       infos: [],
+      realIp: "",
     };
   },
 };

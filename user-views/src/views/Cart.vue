@@ -5,7 +5,7 @@
       <div class="item" v-for="(item, index) in items" :key="index">
         <div class="subItem">
           <img
-            :src="'http://localhost:3005/api/good/getImage/' + item.picture"
+            :src="'http://'+ realIp +':3005/api/good/getImage/' + item.picture"
             alt="缩略图"
             width="200px"
             height="150px"
@@ -43,6 +43,7 @@
 <script>
 export default {
   mounted() {
+    this.realIp = this.ip;
     const cart = this.$store.getters.getCart;
     const goods = cart.goods;
     if (!goods || goods.length === 0) {
@@ -64,6 +65,7 @@ export default {
   data() {
     return {
       items: [],
+      realIp: "",
     };
   },
   methods: {

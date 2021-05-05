@@ -5,8 +5,8 @@
       <a href="#/message">(首页)</a>
     </h1>
     <p>发布时间: {{getCreateTime}}</p>
+    <button class="btn btn-primary" v-if="status !== 0" @click="receiver">领取</button>
     <div v-html="getContent"></div>
-    <a :href="status === 0 ? '#' : '#'">{{status === 0 ? '' : '已'}}领取</a>
   </div>
 </template>
 
@@ -20,6 +20,7 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   mounted() {
     const id = this.$route.query.id;
@@ -34,6 +35,11 @@ export default {
           this.createTime = new Date(model.createTime);
           this.content = model.content;
           this.url = model.url;
+          if (!this.url) {
+            this.status = 0;
+          } else {
+            this.status = 1;
+          }
         } else {
           alert(data.message);
         }
@@ -48,6 +54,24 @@ export default {
       url: "url",
       status: 0,
     };
+  },
+  methods: {
+    receiver() {
+      if (!this.$store.getters.getToken) {
+        this.$router.push("/login");
+        return;
+      }
+      axios
+        .get(this.url, {
+          headers: {
+            token: this.$store.getters.getToken,
+          },
+        })
+        .then((res) => {
+          const data = res.data;
+          alert(data.message);
+        });
+    },
   },
   computed: {
     getCreateTime() {

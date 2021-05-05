@@ -28,6 +28,9 @@
     <div class="item" v-if="getRole === '小米之家'">
       <p>账户状态: {{accountStatus === 0 ? '未认证' : '已认证'}}</p>
     </div>
+    <div class="item">
+      <a href="#/orderList">查看所有订单</a>
+    </div>
   </div>
 </template>
 <style scoped>

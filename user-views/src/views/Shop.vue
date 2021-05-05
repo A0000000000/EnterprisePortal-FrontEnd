@@ -12,7 +12,7 @@
         <div v-show="item.count > 0">
           <a :href="'#/details?id=' + item.id">
             <img
-              :src="'http://localhost:3005/api/good/getImage/' + item.picture"
+              :src="'http://' + realIp + ':3005/api/good/getImage/' + item.picture"
               alt="缩略图"
               width="200px"
               height="150px"
@@ -63,6 +63,7 @@
 <script>
 export default {
   mounted() {
+    this.realIp = this.ip
     this.role = this.$store.getters.getRole == "ROLE_ENTERPRISE";
     this.axios
       .get("good-function-provider", "/api/good/getAllGoods/" + "phone")
@@ -80,6 +81,7 @@ export default {
       role: false,
       title: "手机",
       goods: [],
+      realIp: ''
     };
   },
   methods: {

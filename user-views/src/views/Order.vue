@@ -7,7 +7,7 @@
         <div class="item-good" v-for="(item, index) in goods" :key="index">
           <div class="subItem">
             <img
-              :src="'http://localhost:3005/api/good/getImage/' + item.picture"
+              :src="'http://' + realIp + ':3005/api/good/getImage/' + item.picture"
               alt="缩略图"
               width="200px"
               height="150px"
@@ -83,6 +83,7 @@
 <script>
 export default {
   mounted() {
+    this.realIp = this.ip
     if (!this.$store.getters.getToken) {
       this.$router.push("/login");
       return;
@@ -161,6 +162,7 @@ export default {
       goods: [],
       coupon: {},
       location: {},
+      realIp: ''
     };
   },
   methods: {

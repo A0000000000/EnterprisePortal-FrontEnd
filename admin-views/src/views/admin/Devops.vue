@@ -50,7 +50,7 @@ export default {
       this.$router.push("/manager");
       return;
     }
-    axios.get("http://localhost:8000").then((res) => {
+    axios.get("http://" + this.ip + ":8000").then((res) => {
       const data = res.data;
       if (data.code === 200) {
         for (let item in data.data) {

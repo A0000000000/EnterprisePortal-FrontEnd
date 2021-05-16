@@ -13,7 +13,7 @@
           height="150px"
         />
         <br />
-        <p>{{item.name}}</p>
+        <p>{{ item.name }}</p>
 
         <p>
           售价:
@@ -44,15 +44,41 @@
       </div>
       <div class="form-control">
         <p>选择商品类型</p>
-        <input type="radio" @click="changeType('phone')" name="type" id="phone" checked />
+        <input
+          type="radio"
+          @click="changeType('phone')"
+          name="type"
+          id="phone"
+          checked
+        />
         <label for="phone">手机</label>
-        <input type="radio" @click="changeType('laptop')" name="type" id="laptop" />
+        <input
+          type="radio"
+          @click="changeType('laptop')"
+          name="type"
+          id="laptop"
+        />
         <label for="laptop">笔记本</label>
-        <input type="radio" @click="changeType('router')" name="type" id="router" />
+        <input
+          type="radio"
+          @click="changeType('router')"
+          name="type"
+          id="router"
+        />
         <label for="router">路由器</label>
-        <input type="radio" @click="changeType('miHome')" name="type" id="miHome" />
+        <input
+          type="radio"
+          @click="changeType('miHome')"
+          name="type"
+          id="miHome"
+        />
         <label for="miHome">米家</label>
-        <input type="radio" @click="changeType('miEnterprise')" name="type" id="miEnterprise" />
+        <input
+          type="radio"
+          @click="changeType('miEnterprise')"
+          name="type"
+          id="miEnterprise"
+        />
         <label for="miEnterprise">套餐</label>
       </div>
       <div class="form-control">
@@ -78,10 +104,9 @@
           <a-button type="primary" @click="sureUploadImage">上传图片</a-button>
           <div>
             <h4>已上传图片</h4>
-            <p
-              v-for="(item, index) in images"
-              :key="index"
-            >![图片](http://{{realIp}}:3005/api/good/getImage/{{item}})</p>
+            <p v-for="(item, index) in images" :key="index">
+              ![图片](http://{{ realIp }}:3005/api/good/getImage/{{ item }})
+            </p>
           </div>
         </div>
         <div class="clear"></div>
@@ -102,6 +127,7 @@
 }
 .form-control {
   width: 100%;
+  background: gray;
 }
 .details {
   width: 33%;
@@ -123,7 +149,7 @@
 <script>
 export default {
   mounted() {
-    this.realIp = this.ip
+    this.realIp = this.ip;
     const token = this.$store.getters.getToken;
     const role = this.$store.getters.getRole;
     if (!token) {
@@ -156,7 +182,7 @@ export default {
       details: "",
       file: null,
       images: [],
-      realIp
+      realIp: "",
     };
   },
   methods: {
